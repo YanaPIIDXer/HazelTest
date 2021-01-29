@@ -3,6 +3,8 @@ using System.Net;
 using Hazel;
 using Hazel.Udp;
 using HazelCommon;
+using HazelCommon.HazelExt;
+using HazelCommon.Packet;
 
 namespace HazelTestServer.Server
 {
@@ -65,8 +67,9 @@ namespace HazelTestServer.Server
             //MessageWriter Writer = new MessageWriter(4);
             // ↓インスタンス取得用staticメソッドがあるのでそれを使う
             MessageWriter Writer = MessageWriter.Get();
-            int Data = 0xF0F0;
-            Writer.Write(Data);
+            Serializer Sr = new Serializer(Writer);
+            PacketTest Packet = new PacketTest(30000, 200, 100.5f, "Hello World!!");
+            Packet.Serialize(Sr);
             e.Connection.Send(Writer);
             Writer.Recycle();
         }

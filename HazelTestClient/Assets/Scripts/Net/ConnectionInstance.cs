@@ -6,6 +6,8 @@ using Hazel.Udp;
 using System.Net;
 using System;
 using HazelCommon;
+using HazelCommon.HazelExt;
+using HazelCommon.Packet;
 
 namespace Net
 {
@@ -71,8 +73,22 @@ namespace Net
             Connection = new UdpClientConnection(new IPEndPoint(IPAddress.Loopback, CommonConsts.Port));
             Connection.DataReceived += (e) =>
             {
-                int Data = e.Message.ReadInt32();
-                Debug.Log("RecvData:" + Data);
+                Serializer Sr = new Serializer(e.Message);
+                ushort PacketID = 0;
+                Sr.Serialize(ref PacketID);
+                Debug.Log("PacketID:" + PacketID);
+                switch (PacketID)
+                {
+                    case 1:
+
+                        PacketTest Packet = new PacketTest();
+                        Packet.Serialize(Sr);
+                        Debug.Log("int:" + Packet.IntData);
+                        Debug.Log("short:" + Packet.ShortData);
+                        Debug.Log("float:" + Packet.FloatData);
+                        Debug.Log("string:" + Packet.StringData);
+                        break;
+                }
             };
             Connection.Disconnected += (c, e) =>
             {
