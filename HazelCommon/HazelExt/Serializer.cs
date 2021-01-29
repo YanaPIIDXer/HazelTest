@@ -11,7 +11,7 @@ namespace HazelCommon.HazelExt
         /// <summary>
         /// 書き込みモードか？
         /// </summary>
-        private bool IsWriteMode { get { return (Reader == null); } }
+        public bool IsWriteMode { get { return (Reader == null); } }
 
         /// <summary>
         /// MessageReader
