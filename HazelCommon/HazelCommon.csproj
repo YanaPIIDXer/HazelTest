@@ -8,4 +8,10 @@
     <Exec Command="copy bin\Debug\netstandard2.0\HazelCommon.dll ..\&#xD;&#xA;copy bin\Debug\netstandard2.0\HazelCommon.dll ..\HazelTestClient\Assets\Binary\" />
   </Target>
 
+  <ItemGroup>
+    <Reference Include="Hazel">
+      <HintPath>..\Hazel.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
