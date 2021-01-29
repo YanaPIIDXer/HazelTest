@@ -9,6 +9,9 @@
     <Reference Include="Hazel">
       <HintPath>..\Hazel.dll</HintPath>
     </Reference>
+    <Reference Include="HazelCommon">
+      <HintPath>..\HazelCommon.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

@@ -5,6 +5,7 @@ using Hazel;
 using Hazel.Udp;
 using System.Net;
 using System;
+using HazelCommon;
 
 namespace Net
 {
@@ -17,11 +18,6 @@ namespace Net
         /// Prefabのパス
         /// </summary>
         private static readonly string PrefabPath = "Prefabs/ConnectionInstance";
-
-        /// <summary>
-        /// ハンドシェイクコード
-        /// </summary>
-        private static readonly int HandshakeCode = 0xFF00;
 
         /// <summary>
         /// 接続
@@ -80,7 +76,7 @@ namespace Net
                 }
             };
             MessageWriter Writer = new MessageWriter(4);
-            Writer.Write(HandshakeCode);
+            Writer.Write(Consts.HandshakeCode);
             Connection.ConnectAsync(Writer.Buffer);
 
             while (!IsConnected && !IsClosing)

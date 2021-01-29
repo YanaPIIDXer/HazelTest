@@ -2,6 +2,7 @@ using System;
 using System.Net;
 using Hazel;
 using Hazel.Udp;
+using HazelCommon;
 
 namespace HazelTestServer.Server
 {
@@ -14,11 +15,6 @@ namespace HazelTestServer.Server
         /// ポート番号
         /// </summary>
         private int Port = 1234;
-
-        /// <summary>
-        /// ハンドシェイクコード
-        /// </summary>
-        private static readonly int HandshakeCode = 0xFF00;
 
         /// <summary>
         /// コンストラクタ
@@ -57,7 +53,7 @@ namespace HazelTestServer.Server
                 return;
             }
             int Code = e.HandshakeData.ReadInt32();
-            if (Code != HandshakeCode)
+            if (Code != Consts.HandshakeCode)
             {
                 // ハンドシェイクコードの不一致。弾く
                 DisconnectHandshakeError(e.Connection);
