@@ -76,7 +76,7 @@ namespace Net
                 }
             };
             MessageWriter Writer = new MessageWriter(4);
-            Writer.Write(Consts.HandshakeCode);
+            Writer.Write(CommonConsts.HandshakeCode);
             Connection.ConnectAsync(Writer.Buffer);
 
             while (!IsConnected && !IsClosing)

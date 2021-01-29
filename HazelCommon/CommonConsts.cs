@@ -3,7 +3,7 @@ namespace HazelCommon
     /// <summary>
     /// 定数定義
     /// </summary>
-    public static class Consts
+    public static class CommonConsts
     {
         /// <summary>
         /// ハンドシェイクコード

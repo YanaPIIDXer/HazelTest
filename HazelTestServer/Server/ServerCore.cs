@@ -53,7 +53,7 @@ namespace HazelTestServer.Server
                 return;
             }
             int Code = e.HandshakeData.ReadInt32();
-            if (Code != Consts.HandshakeCode)
+            if (Code != CommonConsts.HandshakeCode)
             {
                 // ハンドシェイクコードの不一致。弾く
                 DisconnectHandshakeError(e.Connection);
