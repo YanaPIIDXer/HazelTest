@@ -67,7 +67,13 @@ namespace Net
         private IEnumerator Connect(Action OnSuccess, Action OnFail)
         {
             if (Connection != null) { yield break; }
+
             Connection = new UdpClientConnection(new IPEndPoint(IPAddress.Loopback, CommonConsts.Port));
+            Connection.DataReceived += (e) =>
+            {
+                int Data = e.Message.ReadInt32();
+                Debug.Log("RecvData:" + Data);
+            };
             Connection.Disconnected += (c, e) =>
             {
                 if (OnDisconnect != null)
@@ -75,7 +81,8 @@ namespace Net
                     OnDisconnect(e.Reason);
                 }
             };
-            MessageWriter Writer = new MessageWriter(4);
+            
+            MessageWriter Writer = new MessageWriter(8);
             Writer.Write(CommonConsts.HandshakeCode);
             Connection.ConnectAsync(Writer.Buffer);
 

@@ -60,6 +60,15 @@ namespace HazelTestServer.Server
                 return;
             }
             Console.WriteLine("Connected.");
+            
+            // ↓newしたら駄目っぽい
+            //MessageWriter Writer = new MessageWriter(4);
+            // ↓インスタンス取得用staticメソッドがあるのでそれを使う
+            MessageWriter Writer = MessageWriter.Get();
+            int Data = 0xF0F0;
+            Writer.Write(Data);
+            e.Connection.Send(Writer);
+            Writer.Recycle();
         }
 
         /// <summary>
