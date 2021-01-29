@@ -167,5 +167,21 @@ namespace HazelCommon.HazelExt
                 Data = Reader.ReadString();
             }
         }
+        
+        /// <summary>
+        /// シリアライズ
+        /// </summary>
+        /// <param name="Data">データ</param>
+        public void Serialize(ref float Data)
+        {
+            if (IsWriteMode)
+            {
+                Writer.Write(Data);
+            }
+            else
+            {
+                Data = Reader.ReadSingle();
+            }
+        }
     }
 }
