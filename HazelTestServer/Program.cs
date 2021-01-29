@@ -1,5 +1,6 @@
 ﻿using System;
 using HazelTestServer.Server;
+using HazelCommon;
 
 namespace HazelTestServer
 {
@@ -8,7 +9,7 @@ namespace HazelTestServer
 		static void Main(string[] args)
 		{
 			Console.WriteLine("Start HazelTestServer...");
-			ServerCore Core = new ServerCore(1234);
+			ServerCore Core = new ServerCore(CommonConsts.Port);
 			Core.Run();
 		}
 	}

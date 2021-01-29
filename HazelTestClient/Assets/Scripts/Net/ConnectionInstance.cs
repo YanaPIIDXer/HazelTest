@@ -67,7 +67,7 @@ namespace Net
         private IEnumerator Connect(Action OnSuccess, Action OnFail)
         {
             if (Connection != null) { yield break; }
-            Connection = new UdpClientConnection(new IPEndPoint(IPAddress.Loopback, 1234));
+            Connection = new UdpClientConnection(new IPEndPoint(IPAddress.Loopback, CommonConsts.Port));
             Connection.Disconnected += (c, e) =>
             {
                 if (OnDisconnect != null)

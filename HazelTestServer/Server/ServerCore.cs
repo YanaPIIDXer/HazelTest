@@ -14,7 +14,7 @@ namespace HazelTestServer.Server
         /// <summary>
         /// ポート番号
         /// </summary>
-        private int Port = 1234;
+        private int Port = 0;
 
         /// <summary>
         /// コンストラクタ
